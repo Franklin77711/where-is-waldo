@@ -1,0 +1,43 @@
+.welcome-div{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #641c7c;
+    text-align: center;
+    background-color: whitesmoke;
+    border-radius: 10%;
+    padding: 2em 0;
+}
+
+.welcome-heading{
+    padding: 0;
+    margin: 0;
+}
+
+.welcome-para{
+    padding: 0;
+    margin: 0;
+}
+
+.welcome-img > img {
+    width: 33%;
+    aspect-ratio: 3/3;
+    object-fit: contain;
+    
+}
+
+.welcome-button{
+    margin-top: 3em;
+    background: rgb(44,12,60);
+    background: linear-gradient(90deg, rgba(44,12,60,1) 0%, rgba(100,28,124,1) 50%, rgba(100,36,203,1) 100%);
+    padding: 0.5em 2em;
+    color: white;
+    border: none;
+    border-radius: 10%;
+    font-weight: 600;
+    font-size: 18px;
+}
+.hide-welcome{
+    display: none;
+}

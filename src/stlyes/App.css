@@ -1,0 +1,12 @@
+body{
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+.bg-img{
+    width: 100%;
+    z-index: -1;
+    position: absolute;
+}
+
