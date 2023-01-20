@@ -1,11 +1,12 @@
 .welcome-div{
     position: absolute;
-    top: 50%;
+    top: 55%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: #641c7c;
+    color: #743389;
     text-align: center;
-    background-color: whitesmoke;
+    background-color: #e6e6e6;
+    border: 5px solid #743389;
     border-radius: 10%;
     padding: 2em 0;
 }

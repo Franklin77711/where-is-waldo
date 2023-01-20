@@ -32,7 +32,7 @@ function NavBar(isStarted){
 
     return(
         <div className="navigation">
-            <h1 className="nav-header">Where is <span className="char-name">{names[index]}</span></h1>
+            <h1 className="nav-header">Where is <span id="char-name">{names[index]}</span></h1>
             <div className="timer">
                 <span>{("0" + Math.floor((time / 60000) % 60)).slice(-2)}:</span>
                 <span>{("0" + Math.floor((time / 1000) % 60)).slice(-2)}:</span>

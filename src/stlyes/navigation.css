@@ -40,6 +40,10 @@
 .spider{
     transform: scale(1.5);
 }
+#char-name{
+    letter-spacing: 0.2em;
+    color: red
+}
 
 @media only screen and (min-width: 500px){
     .spider{

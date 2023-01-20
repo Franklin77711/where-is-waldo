@@ -1,0 +1,17 @@
+#guess-div{
+    color: white;
+    position: absolute;
+    background-color: rgb(44,12,60, 0.6);
+    border: 2px solid white;
+    text-align: center;
+    transition-duration: 2s;
+}
+
+.guess-name{
+    padding: 0.5em 1em;
+    transition-duration: 1s;
+}
+
+.guess-name:hover{
+    background-color: #563d38;
+}
