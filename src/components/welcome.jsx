@@ -6,9 +6,9 @@ function WelcomePage (startGame){
     const {startGameHandler} = startGame;
     const startGameClick = startGameHandler[0];
     const needHide = startGameHandler[1]
-    
+     
     return(
-        <div className={`welcome-page ${needHide ? "hide-welcome": "" }`}>
+        <div className={`welcome-page`} id={`${needHide ? "hide-welcome": ""  }`}>
             <div className="welcome-div">
             <h1 className="welcome-heading">Welcome to Where Is Waldo</h1>
             <p className="welcome-para">(Cartoon Edition)</p>

@@ -9,7 +9,8 @@
     border: 5px solid #743389;
     border-radius: 10%;
     padding: 2em 0;
-}
+} 
+
 
 .welcome-heading{
     padding: 0;
@@ -39,8 +40,14 @@
     font-weight: 600;
     font-size: 18px;
 }
-.hide-welcome{
-    display: none;
+.welcome-button:hover{
+    -webkit-filter: grayscale(50%);
+    filter: grayscale(50%);
+}
+#hide-welcome{
+    -webkit-animation: scale-down-center 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: scale-down-center 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+
 }
 
 .welcome-page{
@@ -49,3 +56,38 @@
     background-color:  rgba(0, 0, 0, 0.9);
     position: fixed;
 }
+ @-webkit-keyframes scale-down-center {
+    0% {
+      -webkit-transform: scale(1);
+              transform: scale(1);
+    }
+    50% {
+        -webkit-transform: scale(0.5);
+                transform: scale(0.5);
+                opacity: 0.5;
+      }
+    100% {
+      -webkit-transform: scale(0);
+              transform: scale(0);
+              visibility: none;
+              z-index: -100;
+    }
+  }
+  @keyframes scale-down-center {
+    0% {
+      -webkit-transform: scale(1);
+              transform: scale(1);
+    }
+    50% {
+        -webkit-transform: scale(0.5);
+                transform: scale(0.5);
+                opacity: 0.5;
+      }
+    100% {
+      -webkit-transform: scale(0);
+              transform: scale(0);
+              visibility: none;
+              z-index: -100;
+    }
+  }
+  

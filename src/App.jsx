@@ -30,6 +30,7 @@ function App() {
   
 const bgImgRef = useRef(null)
 
+
 const [isStarted, setIsStarted] = useState(false);
 const [guessed, setGuessed] = useState(false);
 const [position, setPosition] = useState([0,0]);
@@ -41,6 +42,10 @@ const [foundChar, setfoundChar] = useState({"Aang": false, "Neo": false, "Spider
 const [finalTime, setFinalTime] = useState("00:00:00");
 const [gameIsFinished, setGameIsFinished]= useState(false)
 
+useEffect(()=>{
+  const bgImg = bgImgRef.current;
+  setActualPos([Math.round((position[0] / windowSize[0]) * 100) / 100, Math.round((position[1] / bgImg.clientHeight)* 100)/100]);
+}, [position])
 
 const getFinalTime= (time)=>{
   setFinalTime(time);
@@ -61,23 +66,19 @@ const [windowSize, setWindowSize] = useState([
     setWindowSize([window.innerWidth, window.innerHeight]);
   }
 function  renderGuess  (event) { 
-  const bgImg = bgImgRef.current;
   if(guessed){
     setGuessed(false);     
   }else{
     setPosition([event.pageX, event.pageY]);
-    setActualPos([Math.round((position[0] / windowSize[0]) * 100) / 100, Math.round((position[1] / bgImg.clientHeight)* 100)/100]);
     setGuessed(true);
   }
 }
 
 const guessChar = (charName) =>{
-  
   if(actualPos[0] >= charPosition[charName][0]-0.05 && 
     actualPos[0] <= charPosition[charName][0]+0.05 &&
     actualPos[1] >= charPosition[charName][1]-0.05 && 
     actualPos[1] <= charPosition[charName][1]+0.05){
-
     setfoundChar({...foundChar, [charName]: true});
     setGuessed(false); 
     setGoodGuess(true);
