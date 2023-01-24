@@ -10,10 +10,11 @@ function NavBar(isStarted){
     const clock = started[0];
     const foundChar = started[1];
     const getFinalTime = started[2];
+    const finalTime = started[3];
     const [time, setTime] = useState(0);
     const [index, setIndex] = useState(0);
     const [timer, setClock] = useState(true);
-    const [finalTime, setFinalTime] = useState("00:00:00");
+    const [finalTimeSet, setFinalTime] = useState(finalTime);
     const names = ["Aang", "Neo", "Spider-Man"];
 
     useEffect(() => {
@@ -26,6 +27,7 @@ function NavBar(isStarted){
           clearInterval(interval);
           setFinalTime(`${("0" + Math.floor((time / 60000) % 60)).slice(-2)}:${("0" + Math.floor((time / 1000) % 60)).slice(-2)}:${("0" + ((time / 10) % 100)).slice(-2)}`)
           setClock(false);
+          setTime(0)
       }
       return () => clearInterval(interval);
   }, [clock, foundChar]);
@@ -40,14 +42,15 @@ function NavBar(isStarted){
 
         useEffect(() =>{
           if(foundChar.Aang && foundChar.Neo && foundChar["Spider-Man"]){
-      getFinalTime(finalTime)
+      getFinalTime(finalTimeSet);
           }
-        },[finalTime]);
+        },[finalTimeSet]);
+
 
     return(
         <div className="navigation">
             <h1 className="nav-header">Where is <span id="char-name">{names[index]}</span></h1>
-            <div className="timer" /*onChange={getFinalTime(finalTime)}*/>
+            <div className="timer">
                 <span>{("0" + Math.floor((time / 60000) % 60)).slice(-2)}:</span>
                 <span>{("0" + Math.floor((time / 1000) % 60)).slice(-2)}:</span>
                 <span>{("0" + ((time / 10) % 100)).slice(-2)}</span>

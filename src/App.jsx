@@ -1,6 +1,7 @@
 import "./stlyes/App.css";
 import "./stlyes/welcome.css";
 import "./stlyes/guess.css"
+import "./stlyes/endgame.css"
 import BgImg from './pics/background.jpg';
 import WelcomePage from "./components/welcome";
 import NavBar from "./components/navigation";
@@ -48,12 +49,18 @@ useEffect(()=>{
 }, [position])
 
 const getFinalTime= (time)=>{
+  setActualPos([0,0])
   setFinalTime(time);
-  setGameIsFinished(true)
+  setGameIsFinished(true);
+
 }
 
 
+
 const startGame =()=>{
+  setFinalTime("00:00:00");
+  setfoundChar({"Aang": false, "Neo": false, "Spider-Man": false});
+  setGameIsFinished(false)
   setIsStarted(true)
   getCharacters(db);
 }
@@ -71,14 +78,14 @@ function  renderGuess  (event) {
   }else{
     setPosition([event.pageX, event.pageY]);
     setGuessed(true);
-  }
+  } 
 }
 
 const guessChar = (charName) =>{
-  if(actualPos[0] >= charPosition[charName][0]-0.05 && 
-    actualPos[0] <= charPosition[charName][0]+0.05 &&
-    actualPos[1] >= charPosition[charName][1]-0.05 && 
-    actualPos[1] <= charPosition[charName][1]+0.05){
+  if(actualPos[0] >= charPosition[charName][0]-0.01 && 
+    actualPos[0] <= charPosition[charName][0]+0.01 &&
+    actualPos[1] >= charPosition[charName][1]-0.01 && 
+    actualPos[1] <= charPosition[charName][1]+0.01){
     setfoundChar({...foundChar, [charName]: true});
     setGuessed(false); 
     setGoodGuess(true);
@@ -98,13 +105,13 @@ const guessChar = (charName) =>{
 
   return (
     <div className="content" >
-      <NavBar started={[isStarted, foundChar, getFinalTime]}/>
+      <NavBar started={[isStarted, foundChar, getFinalTime, finalTime]}/>
       <WelcomePage startGameHandler={[startGame, isStarted]}/>
       <img id="bg-img" src={BgImg} alt="background" onClick={renderGuess} ref={bgImgRef} ></img>
       {guessed && <Guess location={[position, guessChar, foundChar]} />}
       {goodGuess && <div id="correct-guess">You found one!</div>}
       {badGuess && <div id="bad-guess">Oops! Try again!</div>}
-      {gameIsFinished && <EndGame/>}
+      {gameIsFinished && <EndGame startGameHandler={[startGame, isStarted]}/>}
     </div>
   );
 }

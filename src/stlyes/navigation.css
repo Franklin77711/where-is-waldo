@@ -34,8 +34,11 @@
 .nav-img > img {
     width: 30%;
     aspect-ratio: 3/2;
-    object-fit: contain;
-    
+    object-fit: contain; 
+}
+.nav-img > img:hover{
+    scale: 1.2;
+    transition-duration: 0.5s;
 }
 .spider{
     transform: scale(1.5);

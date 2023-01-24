@@ -1,4 +1,4 @@
-.welcome-div{
+.endgame-div{
     position: absolute;
     top: 55%;
     left: 50%;
@@ -12,24 +12,15 @@
 } 
  
 
-.welcome-heading{
+.endgame-heading{
     padding: 0;
     margin: 0;
 }
 
-.welcome-para{
-    padding: 0;
-    margin: 0;
-}
 
-.welcome-img > img {
-    width: 33%;
-    aspect-ratio: 3/3;
-    object-fit: contain;
-    
-}
 
-.welcome-button{
+
+.endgame-button{
     margin-top: 3em;
     background: rgb(44,12,60);
     background: linear-gradient(90deg, rgba(44,12,60,1) 0%, rgba(100,28,124,1) 50%, rgba(100,36,203,1) 100%);
@@ -40,21 +31,22 @@
     font-weight: 600;
     font-size: 18px;
 }
-.welcome-button:hover{
+.endgame-button:hover{
     -webkit-filter: grayscale(50%);
     filter: grayscale(50%);
 }
-#hide-welcome{
+#hide-endgame{
     -webkit-animation: scale-down-center 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 	        animation: scale-down-center 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 
 }
 
-.welcome-page{
+.endgame-page{
     width: 100vw;
     height: 100vh;
     background-color:  rgba(0, 0, 0, 0.9);
     position: fixed;
+    z-index: 100;
 }
  @-webkit-keyframes scale-down-center {
     0% {
