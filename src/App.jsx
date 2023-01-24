@@ -5,6 +5,7 @@ import BgImg from './pics/background.jpg';
 import WelcomePage from "./components/welcome";
 import NavBar from "./components/navigation";
 import Guess from "./components/guess";
+import EndGame from "./components/endgame";
 import { useState, useEffect } from "react";
 import { db } from "./firebaseConfig";
 import {collection, getDocs } from 'firebase/firestore/lite';
@@ -25,6 +26,7 @@ function App() {
     const char = chacSnapShot.docs.map(doc => doc.data());
     setCharPosition(char[0])
   }
+
   
 const bgImgRef = useRef(null)
 
@@ -36,9 +38,14 @@ const [charPosition, setCharPosition] = useState();
 const [badGuess, setBadGuess] = useState(false);
 const [goodGuess, setGoodGuess] = useState(false);
 const [foundChar, setfoundChar] = useState({"Aang": false, "Neo": false, "Spider-Man": false});
+const [finalTime, setFinalTime] = useState("00:00:00");
+const [gameIsFinished, setGameIsFinished]= useState(false)
 
 
-
+const getFinalTime= (time)=>{
+  setFinalTime(time);
+  setGameIsFinished(true)
+}
 
 
 const startGame =()=>{
@@ -55,7 +62,6 @@ const [windowSize, setWindowSize] = useState([
   }
 function  renderGuess  (event) { 
   const bgImg = bgImgRef.current;
-  console.log(foundChar)
   if(guessed){
     setGuessed(false);     
   }else{
@@ -66,6 +72,7 @@ function  renderGuess  (event) {
 }
 
 const guessChar = (charName) =>{
+  
   if(actualPos[0] >= charPosition[charName][0]-0.05 && 
     actualPos[0] <= charPosition[charName][0]+0.05 &&
     actualPos[1] >= charPosition[charName][1]-0.05 && 
@@ -77,7 +84,6 @@ const guessChar = (charName) =>{
       setTimeout(() => {
         setGoodGuess(false);
       }, 3000);
-    console.log("jó")
   }else{
       setGuessed(false); 
       setBadGuess(true);
@@ -85,21 +91,19 @@ const guessChar = (charName) =>{
         setBadGuess(false);
       }, 3000);
     }
-  console.log(charPosition[charName])
-  console.log(actualPos)
-  console.log(Math.round((actualPos[0]-0.01)*100)/100)
 }
 
 
 
   return (
     <div className="content" >
-      <NavBar started={[isStarted, foundChar]} />
+      <NavBar started={[isStarted, foundChar, getFinalTime]}/>
       <WelcomePage startGameHandler={[startGame, isStarted]}/>
       <img id="bg-img" src={BgImg} alt="background" onClick={renderGuess} ref={bgImgRef} ></img>
       {guessed && <Guess location={[position, guessChar, foundChar]} />}
       {goodGuess && <div id="correct-guess">You found one!</div>}
       {badGuess && <div id="bad-guess">Oops! Try again!</div>}
+      {gameIsFinished && <EndGame/>}
     </div>
   );
 }

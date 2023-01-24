@@ -4,17 +4,17 @@ import Neo from "../pics/neo.png";
 import Spider from "../pics/spider.png";
 import "../stlyes/navigation.css"
 
+
 function NavBar(isStarted){
     const {started} = isStarted
     const clock = started[0];
-    const foundChar = started[1]
+    const foundChar = started[1];
+    const getFinalTime = started[2];
     const [time, setTime] = useState(0);
     const [index, setIndex] = useState(0);
     const [timer, setClock] = useState(true);
-    const [finalTime, setFinalTime] = useState("00:00:00")
-    const names = ["Aang", "Neo", "Spider-Man"]
-
-    const allFound = Object.values(foundChar).every(val => val === true);
+    const [finalTime, setFinalTime] = useState("00:00:00");
+    const names = ["Aang", "Neo", "Spider-Man"];
 
     useEffect(() => {
       let interval;
@@ -24,8 +24,7 @@ function NavBar(isStarted){
           }, 10);
       } else if (!clock || Object.values(foundChar).every(val => val)) {
           clearInterval(interval);
-          setFinalTime(time)
-          console.log(finalTime)
+          setFinalTime(`${("0" + Math.floor((time / 60000) % 60)).slice(-2)}:${("0" + Math.floor((time / 1000) % 60)).slice(-2)}:${("0" + ((time / 10) % 100)).slice(-2)}`)
           setClock(false);
       }
       return () => clearInterval(interval);
@@ -39,10 +38,16 @@ function NavBar(isStarted){
         }
         }, [index]);
 
+        useEffect(() =>{
+          if(foundChar.Aang && foundChar.Neo && foundChar["Spider-Man"]){
+      getFinalTime(finalTime)
+          }
+        },[finalTime]);
+
     return(
         <div className="navigation">
             <h1 className="nav-header">Where is <span id="char-name">{names[index]}</span></h1>
-            <div className="timer">
+            <div className="timer" /*onChange={getFinalTime(finalTime)}*/>
                 <span>{("0" + Math.floor((time / 60000) % 60)).slice(-2)}:</span>
                 <span>{("0" + Math.floor((time / 1000) % 60)).slice(-2)}:</span>
                 <span>{("0" + ((time / 10) % 100)).slice(-2)}</span>
