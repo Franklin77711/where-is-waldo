@@ -8,16 +8,18 @@ function WelcomePage (startGame){
     const needHide = startGameHandler[1]
     
     return(
-        <div className={`welcome-div ${needHide ? "hide-welcome": "" }`}>
+        <div className={`welcome-page ${needHide ? "hide-welcome": "" }`}>
+            <div className="welcome-div">
             <h1 className="welcome-heading">Welcome to Where Is Waldo</h1>
             <p className="welcome-para">(Cartoon Edition)</p>
-            <h2>Find These characters</h2>
+            <h2>Find These Characters</h2>
             <div className="welcome-img">
               <img src={Aang} alt="Aang from Avatar"></img>
               <img src={Neo}alt="Neo from Matrix"></img>
               <img src={Spider} alt="Spider-man"></img>
             </div>
             <button className="welcome-button" onClick={startGameClick}>Start</button>
+            </div>
         </div>
     )
 }

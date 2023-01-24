@@ -5,22 +5,31 @@ import Spider from "../pics/spider.png";
 import "../stlyes/navigation.css"
 
 function NavBar(isStarted){
-    const started = isStarted.started
+    const {started} = isStarted
+    const clock = started[0];
+    const foundChar = started[1]
     const [time, setTime] = useState(0);
     const [index, setIndex] = useState(0);
+    const [timer, setClock] = useState(true);
+    const [finalTime, setFinalTime] = useState("00:00:00")
     const names = ["Aang", "Neo", "Spider-Man"]
 
+    const allFound = Object.values(foundChar).every(val => val === true);
+
     useEffect(() => {
-        let interval;
-        if (started) {
+      let interval;
+      if (clock && !Object.values(foundChar).every(val => val)) {
           interval = setInterval(() => {
-            setTime((prevTime) => prevTime + 10);
+              setTime((prevTime) => prevTime + 10);
           }, 10);
-        } else if (!started) {
+      } else if (!clock || Object.values(foundChar).every(val => val)) {
           clearInterval(interval);
-        }
-        return () => clearInterval(interval);
-      }, [started]);
+          setFinalTime(time)
+          console.log(finalTime)
+          setClock(false);
+      }
+      return () => clearInterval(interval);
+  }, [clock, foundChar]);
 
       useEffect(()=>{
         if (index === 3){
@@ -39,9 +48,9 @@ function NavBar(isStarted){
                 <span>{("0" + ((time / 10) % 100)).slice(-2)}</span>
             </div>
             <div className="nav-img">
-                <img src={Aang} alt="Aang from Avatar"></img>
-                <img src={Neo}alt="Neo from Matrix"></img>
-                <img src={Spider} alt="Spider-man" className="spider"></img>
+                <img src={Aang} alt="Aang from Avatar" className={` ${foundChar.Aang ? "bw-img": ""}`}></img>
+                <img src={Neo}alt="Neo from Matrix" className={` ${foundChar.Neo ? "bw-img": ""}`}></img>
+                <img src={Spider} alt="Spider-man" className={`spider ${foundChar["Spider-Man"]? "bw-img": ""}`}></img>
             </div>
         </div>
     )

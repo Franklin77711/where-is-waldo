@@ -17,4 +17,28 @@ body{
     position: absolute;
 
 }
+#correct-guess{
+    position: fixed;
+    z-index: 5;
+    top: 7em;
+    left: 50%;
+    padding: 0.5em 1em;
+    background-color: chartreuse;
+    color: white;
+    transition-delay: 2s;
+    transform: translate(-50%, -50%);
+}
+
+#bad-guess{
+    position: fixed;
+    z-index: 5;
+    top: 7em;
+    left: 50%;
+    padding: 0.5em 1em;
+    background-color:orangered;
+    color: white;
+    transform: scale(0.8);
+    transition: all 2s ease-in-out;
+    transform: translate(-50%, -50%);
+}
 

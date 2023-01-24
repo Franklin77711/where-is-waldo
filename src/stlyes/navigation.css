@@ -6,7 +6,7 @@
     padding: 0.5em;
     position: fixed;
     background: rgb(44,12,60);
-    background: linear-gradient(180deg, rgba(44,12,60,0.9220063025210083) 0%, rgba(123,108,130,0.6839110644257703) 74%, rgba(255,255,255,0.5970763305322129) 100%);
+    background: linear-gradient(180deg, rgba(44,12,60,0.9220063025210083) 20%, rgba(123,108,130,0.6839110644257703) 90%, rgba(255,255,255,0) 100%);
     color: white;
     height: 5em;
     width: 100%;
@@ -43,6 +43,10 @@
 #char-name{
     letter-spacing: 0.2em;
     color: red
+}
+.bw-img{
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
 }
 
 @media only screen and (min-width: 500px){
