@@ -15,6 +15,6 @@
 <p>After a correct guess in the navbar the character will switch to black and white</p>
 <p>When you found all three your time will show up and you can enter your username to get up to the leaderboard which is stored in firebase</p><br>
 
-![Leaderboard](https://ibb.co/mhQgPmS)
+![Leaderboard](https://i.ibb.co/HGm390X/Leaderboard.png)
 
 <p>This project was build in React and using Firebase as backend (for leaderboard and character locations)</p>
