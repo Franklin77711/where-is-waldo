@@ -28,6 +28,8 @@ function App() {
     setCharPosition(char[0])
   }
 
+ 
+
   
 const bgImgRef = useRef(null)
 
@@ -43,16 +45,20 @@ const [foundChar, setfoundChar] = useState({"Aang": false, "Neo": false, "Spider
 const [finalTime, setFinalTime] = useState("00:00:00");
 const [gameIsFinished, setGameIsFinished]= useState(false)
 
+const [windowSize, setWindowSize] = useState([
+  window.innerWidth,
+  window.innerHeight,
+]);
+
 useEffect(()=>{
   const bgImg = bgImgRef.current;
   setActualPos([Math.round((position[0] / windowSize[0]) * 100) / 100, Math.round((position[1] / bgImg.clientHeight)* 100)/100]);
-}, [position])
+}, [position, windowSize])
 
 const getFinalTime= (time)=>{
   setActualPos([0,0])
   setFinalTime(time);
   setGameIsFinished(true);
-
 }
 
 
@@ -64,10 +70,7 @@ const startGame =()=>{
   setIsStarted(true)
   getCharacters(db);
 }
-const [windowSize, setWindowSize] = useState([
-  window.innerWidth,
-  window.innerHeight,
-]);
+
 
   const handleWindowResize = () => {
     setWindowSize([window.innerWidth, window.innerHeight]);
@@ -101,8 +104,6 @@ const guessChar = (charName) =>{
     }
 }
 
-
-
   return (
     <div className="content" >
       <NavBar started={[isStarted, foundChar, getFinalTime, finalTime]}/>
@@ -111,7 +112,7 @@ const guessChar = (charName) =>{
       {guessed && <Guess location={[position, guessChar, foundChar]} />}
       {goodGuess && <div id="correct-guess">You found one!</div>}
       {badGuess && <div id="bad-guess">Oops! Try again!</div>}
-      {gameIsFinished && <EndGame startGameHandler={[startGame, isStarted]}/>}
+      {gameIsFinished && <EndGame startGameHandler={[startGame, finalTime]}/>}
     </div>
   );
 }

@@ -2,26 +2,35 @@
     position: absolute;
     top: 55%;
     left: 50%;
+    width: 20em;
+    height: 20em;
     transform: translate(-50%, -50%);
     color: #743389;
     text-align: center;
     background-color: #e6e6e6;
     border: 5px solid #743389;
     border-radius: 10%;
-    padding: 2em 0;
+    padding: 1em 1em 2em 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 } 
  
 
 .endgame-heading{
     padding: 0;
     margin: 0;
+  
 }
 
 
-
+.endgame-leaderboard{
+  flex-grow: 2;
+  overflow-y: auto;
+}
 
 .endgame-button{
-    margin-top: 3em;
+
     background: rgb(44,12,60);
     background: linear-gradient(90deg, rgba(44,12,60,1) 0%, rgba(100,28,124,1) 50%, rgba(100,36,203,1) 100%);
     padding: 0.5em 2em;
@@ -40,6 +49,40 @@
 	        animation: scale-down-center 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 
 }
+#login-div{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+} 
+
+#login-btn {
+  margin: 5em 3em 3em 3em;
+  padding: 0.7em 2em;
+}
+#login-div > input{
+  width: 16em;
+  text-align: center;
+  background-color: #743389;
+  color: white;
+  padding: 0.5em 0;
+  border-radius: 5px;
+}
+#login-div > input:active{
+  border-color: #743389;
+}
+#login-div > input::placeholder{
+  text-align: center;
+  color: white;
+}
+#login-div > h1{
+  font-size: 26px;
+}
+.login-time{
+  font-size: 36px;
+  animation: blink 2s linear infinite;
+}
+
 
 .endgame-page{
     width: 100vw;
@@ -48,6 +91,34 @@
     position: fixed;
     z-index: 100;
 }
+
+.user-container{
+  margin:  0 1em;
+  display: flex;
+  justify-content:space-between;
+}
+.user-container > p{
+  margin: 0.5em;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0;
+  }
+  75% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
  @-webkit-keyframes scale-down-center {
     0% {
       -webkit-transform: scale(1);
