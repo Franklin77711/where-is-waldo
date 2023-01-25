@@ -29,7 +29,7 @@ function EndGame(startGame){
             const q = query(collection(db, "Leaderboard"));
             const chacSnapShot =  await getDocs(q);
             const char = chacSnapShot.docs.map(doc => doc.data());
-            setLeaderboard(char)
+            
             const sortedData = char.sort(function(a, b) {
                 const aSplitted = a.time.split(':');
                 const bSplitted = b.time.split(':');
@@ -39,6 +39,7 @@ function EndGame(startGame){
                 
             });
             setSortedLeaderboard(sortedData);
+            setLeaderboard(char)
           
         }
        
