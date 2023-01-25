@@ -10,9 +10,11 @@
 <br>
 <br>
 <p>After the game start a timer start to count</p>
-<p>If you found a character and click on it you have to choose which one you found</p><br>
-<p>Wether it was correct or not an idicator will show up saying it was good or not</p><br>
-<p>After a correct guess in the navbar the character will switch to black and white</p><br>
+<p>If you found a character and click on it you have to choose which one you found</p>
+<p>Wether it was correct or not an idicator will show up saying it was good or not</p>
+<p>After a correct guess in the navbar the character will switch to black and white</p>
 <p>When you found all three your time will show up and you can enter your username to get up to the leaderboard which is stored in firebase</p><br>
 
-![Alt text](/home/robi/Pictures "Leaderboard")
+![Leaderboard](/home/robi/Pictures/Leaderboard.png)
+
+<p>This project was build in React and using Firebase as backend (for leaderboard and character locations)</p>
