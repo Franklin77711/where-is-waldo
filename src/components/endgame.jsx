@@ -15,7 +15,6 @@ function EndGame(startGame){
     const [sortedLeaderboard, setSortedLeaderboard] = useState([]);
    
    const loginAnonymously = () =>{
-    console.log("login hivas ", user)
     setUser(username)
     setIsAnonymous(true)
     }
